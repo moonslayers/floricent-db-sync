@@ -13,7 +13,7 @@ class Db
     public void Conectar(string connectionString)
     {
         using (SqlConnection connection = new SqlConnection(connectionString))
-        {
+        {//dd
             try
             {
                 connection.Open();
