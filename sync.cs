@@ -20,11 +20,23 @@ class SyncDb
             sourceConnection.Open();
             targetConnection.Open();
 
+            List<string> tablas = new List<string>(){
+                    "admClientes",
+                    "admProductos",
+                    "admMovimientos",
+                    "admDocumentos",
+                    "admUnidadesMedidaPeso",
+                };
 
-            if(CompareAndSyncTables(sourceConnection, targetConnection, "admProductos","CIDPRODUCTO")){
+            if (CompareAndSyncTables(sourceConnection, targetConnection, "admProductos", "CIDPRODUCTO"))
+            {
                 //implementar logica para cuando se haya sincronizado
             }
-            if(CompareAndSyncTables(sourceConnection, targetConnection, "admClientes","CIDCLIENTEPROVEEDOR")){
+
+
+
+            if (CompareAndSyncTables(sourceConnection, targetConnection, "admClientes", "CIDCLIENTEPROVEEDOR"))
+            {
                 //implementar logica para cuando se haya sincronizado
             }
 
@@ -64,10 +76,10 @@ class SyncDb
                     string jsonRow = JsonConvert.SerializeObject(rowAsDictionary);
                     jsonRows.Add(jsonRow);
                 }
-                SendDataToNodeAPI(tableName,jsonRows);
+                SendDataToNodeAPI(tableName, jsonRows);
 
                 rowsToUpdate = true; // Se encontraron filas para actualizar
-                Console.WriteLine(tableName+" actualizada.");
+                Console.WriteLine(tableName + " actualizada.");
 
                 // Inserta las filas encontradas en syncAux
                 using (SqlBulkCopy bulkCopy = new SqlBulkCopy(targetConnection))
@@ -80,7 +92,7 @@ class SyncDb
         return rowsToUpdate;
     }
 
-    static async void SendDataToNodeAPI(string tablename, List<string>jsonData)
+    static async void SendDataToNodeAPI(string tablename, List<string> jsonData)
     {
         // Combina todas las cadenas JSON en una sola cadena
         string combinedJsonData = "[" + string.Join(",", jsonData) + "]";
@@ -109,9 +121,9 @@ class SyncDb
             }
             else
             {
-                Console.WriteLine("Error al enviar los datos a la API en Node.js: ",response.StatusCode);
+                Console.WriteLine("Error al enviar los datos a la API en Node.js: ", response.StatusCode);
             }
         }
     }
-    
+
 }

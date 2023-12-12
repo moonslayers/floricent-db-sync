@@ -34,11 +34,12 @@ class Db
                     "admMovimientos",
                     "admDocumentos",
                     "admUnidadesMedidaPeso",
+                    "admMonedas",
                 };
 
                 for (int i = 0; i < tablas.Count; i++)
                 {
-                    if (!TableExists(connection, tablas[i]))
+                    if (!TableExists(connection, tablas[i]) && false)
                     {
                         CopyTableStructureAndData(connection, "adCENTRO_FLORICULTOR_D", tablas[i]);
                         Console.WriteLine("tabla "+tablas[i]+" creada en syncAux");
@@ -99,7 +100,8 @@ class Db
             var content = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
 
             // Define la URL a la que deseas enviar los datos
-            string url = "http://localhost:3000/conpaq/db";
+            //puerto 3000 es para pruebas
+            string url = "http://3.132.141.153:3000/conpaq/db";
 
             // Realiza la solicitud POST
             var response = await client.PostAsync(url, content);
