@@ -26,7 +26,8 @@ class Db
                 }
 
                 // Cambiar al contexto de la base de datos syncAux.
-                connection.ChangeDatabase("syncAux");
+                //connection.ChangeDatabase("syncAux");
+                connection.ChangeDatabase("adCENTRO_FLORICULTOR_D");
 
                 List<string> tablas = new List<string>(){
                     "admClientes",
@@ -36,6 +37,14 @@ class Db
                     "admUnidadesMedidaPeso",
                     "admMonedas",
                 };
+                List<string> condiciones = new List<string>(){
+                    "WHERE CESTATUS=1 AND (CTIPOCLIENTE=2 OR CTIPOCLIENTE=3)",
+                    "WHERE CSTATUSPRODUCTO=1",
+                    "FROM (SELECT m.*, ROW_NUMBER() OVER (PARTITION BY m.CIDPRODUCTO ORDER BY m.CFECHA DESC) AS row_number FROM admMovimientos m) AS temp WHERE temp.row_number = 1",                  
+                    "WHERE CIDDOCUMENTODE=19",
+                    "",
+                    "",
+                };
 
                 for (int i = 0; i < tablas.Count; i++)
                 {
@@ -44,7 +53,7 @@ class Db
                         CopyTableStructureAndData(connection, "adCENTRO_FLORICULTOR_D", tablas[i]);
                         Console.WriteLine("tabla "+tablas[i]+" creada en syncAux");
                     }
-                    SendDataToNodeAPI(connection, tablas[i]);
+                    SendDataToNodeAPI(connection, tablas[i], condiciones[i]);
                 }
                 Console.WriteLine("base de datos creada con éxito.");
             }
@@ -81,9 +90,9 @@ class Db
             insertDataCommand.ExecuteNonQuery();
         }
     }
-    static async void SendDataToNodeAPI(SqlConnection connection, string tablename)
+    static async void SendDataToNodeAPI(SqlConnection connection, string tablename, string condicion)
     {
-        List<string> jsonData = GetAllRecordsAsJson(connection, tablename);
+        List<string> jsonData = GetAllRecordsAsJson(connection, tablename, condicion);
         // Combina todas las cadenas JSON en una sola cadena
         string combinedJsonData = "[" + string.Join(",", jsonData) + "]";
         using (var client = new HttpClient())
@@ -101,7 +110,8 @@ class Db
 
             // Define la URL a la que deseas enviar los datos
             //puerto 3000 es para pruebas
-            string url = "http://3.132.141.153:3000/conpaq/db";
+            //string url = "http://3.132.141.153:3000/conpaq/db";
+            string url = "http://localhost:3000/conpaq/db";
 
             // Realiza la solicitud POST
             var response = await client.PostAsync(url, content);
@@ -116,11 +126,15 @@ class Db
             }
         }
     }
-    static List<string> GetAllRecordsAsJson(SqlConnection connection, string tableName)
+    static List<string> GetAllRecordsAsJson(SqlConnection connection, string tableName, string condicion)
     {
         List<string> jsonRecords = new List<string>();
-
-        string selectQuery = $"SELECT * FROM {tableName}";
+        string selectQuery = $"SELECT * FROM {tableName} {condicion}";
+        if(tableName=="admMovimientos"){
+            selectQuery = $"SELECT * {condicion}";
+        }
+        Console.WriteLine(tableName);
+        
 
         using (SqlCommand command = new SqlCommand(selectQuery, connection))
         using (SqlDataReader reader = command.ExecuteReader())
