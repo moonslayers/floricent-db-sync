@@ -121,11 +121,11 @@ class Db
 
             if (response.IsSuccessStatusCode)
             {
-                //Console.WriteLine("Datos enviados a la API en Node.js con éxito.");
+                Console.WriteLine("Datos enviados a la API en Node.js con éxito.");
             }
             else
             {
-                //Console.WriteLine("Error al enviar los datos a la API en Node.js.");
+                Console.WriteLine("Error al enviar los datos a la API en Node.js.");
             }
         }
     }

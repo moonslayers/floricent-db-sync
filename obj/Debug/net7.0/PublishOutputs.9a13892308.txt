@@ -1,0 +1,12 @@
+/home/junior/Documents/integranet/dbSync/bin/Debug/net7.0/publish/dbSync
+/home/junior/Documents/integranet/dbSync/bin/Debug/net7.0/publish/dbSync.dll
+/home/junior/Documents/integranet/dbSync/bin/Debug/net7.0/publish/dbSync.deps.json
+/home/junior/Documents/integranet/dbSync/bin/Debug/net7.0/publish/dbSync.runtimeconfig.json
+/home/junior/Documents/integranet/dbSync/bin/Debug/net7.0/publish/dbSync.pdb
+/home/junior/Documents/integranet/dbSync/bin/Debug/net7.0/publish/Newtonsoft.Json.dll
+/home/junior/Documents/integranet/dbSync/bin/Debug/net7.0/publish/System.Data.SqlClient.dll
+/home/junior/Documents/integranet/dbSync/bin/Debug/net7.0/publish/runtimes/win-arm64/native/sni.dll
+/home/junior/Documents/integranet/dbSync/bin/Debug/net7.0/publish/runtimes/win-x64/native/sni.dll
+/home/junior/Documents/integranet/dbSync/bin/Debug/net7.0/publish/runtimes/win-x86/native/sni.dll
+/home/junior/Documents/integranet/dbSync/bin/Debug/net7.0/publish/runtimes/unix/lib/netcoreapp2.1/System.Data.SqlClient.dll
+/home/junior/Documents/integranet/dbSync/bin/Debug/net7.0/publish/runtimes/win/lib/netcoreapp2.1/System.Data.SqlClient.dll
