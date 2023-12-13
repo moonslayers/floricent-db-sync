@@ -27,7 +27,8 @@ class Db
 
                 // Cambiar al contexto de la base de datos syncAux.
                 //connection.ChangeDatabase("syncAux");
-                connection.ChangeDatabase("adCENTRO_FLORICULTOR_D");
+                //connection.ChangeDatabase("adCENTRO_FLORICULTOR_D");
+                connection.ChangeDatabase("adEmpresa_pruebaFloricent");
 
                 List<string> tablas = new List<string>(){
                     "admClientes",
@@ -111,18 +112,20 @@ class Db
             // Define la URL a la que deseas enviar los datos
             //puerto 3000 es para pruebas
             //string url = "http://3.132.141.153:3000/conpaq/db";
-            string url = "http://localhost:3000/conpaq/db";
+            //string url = "http://localhost:3000/conpaq/db";
+            //mi maquina
+            string url = "http://192.168.10.125:3000/conpaq/db";
 
             // Realiza la solicitud POST
             var response = await client.PostAsync(url, content);
 
             if (response.IsSuccessStatusCode)
             {
-                Console.WriteLine("Datos enviados a la API en Node.js con éxito.");
+                //Console.WriteLine("Datos enviados a la API en Node.js con éxito.");
             }
             else
             {
-                Console.WriteLine("Error al enviar los datos a la API en Node.js.");
+                //Console.WriteLine("Error al enviar los datos a la API en Node.js.");
             }
         }
     }
@@ -133,7 +136,7 @@ class Db
         if(tableName=="admMovimientos"){
             selectQuery = $"SELECT * {condicion}";
         }
-        Console.WriteLine(tableName);
+        //Console.WriteLine(tableName);
         
 
         using (SqlCommand command = new SqlCommand(selectQuery, connection))
