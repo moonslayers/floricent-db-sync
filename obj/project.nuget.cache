@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "HgrgxRuEr1ouve9eUSQ/Z2YMiqfmkCo04E8JQL3U2+WKGhvtcmAqQPzAIabouId+PGPQZlku/pMWDF0uHAvCIg==",
+  "dgSpecHash": "LB5bfrWrtOySjjVPr6dh7y5maDsvYMUg8y/6xhk/cDfWhInjzfj5BxohRIpObg82EsbeUeKRMGFNJyLNjBQu2g==",
   "success": true,
   "projectFilePath": "/home/junior/Documents/integranet/dbSync/dbSync.csproj",
   "expectedPackageFiles": [
@@ -16,7 +16,6 @@
     "/home/junior/.nuget/packages/system.security.principal.windows/4.7.0/system.security.principal.windows.4.7.0.nupkg.sha512",
     "/home/junior/.nuget/packages/microsoft.netcore.app.runtime.win-x64/7.0.13/microsoft.netcore.app.runtime.win-x64.7.0.13.nupkg.sha512",
     "/home/junior/.nuget/packages/microsoft.aspnetcore.app.runtime.win-x64/7.0.13/microsoft.aspnetcore.app.runtime.win-x64.7.0.13.nupkg.sha512",
-    "/home/junior/.nuget/packages/microsoft.netcore.app.crossgen2.linux-x64/7.0.13/microsoft.netcore.app.crossgen2.linux-x64.7.0.13.nupkg.sha512",
     "/home/junior/.nuget/packages/microsoft.netcore.app.host.win-x64/7.0.13/microsoft.netcore.app.host.win-x64.7.0.13.nupkg.sha512"
   ],
   "logs": []

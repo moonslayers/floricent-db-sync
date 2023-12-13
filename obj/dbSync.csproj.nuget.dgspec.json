@@ -64,10 +64,6 @@
               "version": "[7.0.13, 7.0.13]"
             },
             {
-              "name": "Microsoft.NETCore.App.Crossgen2.linux-x64",
-              "version": "[7.0.13, 7.0.13]"
-            },
-            {
               "name": "Microsoft.NETCore.App.Host.win-x64",
               "version": "[7.0.13, 7.0.13]"
             },

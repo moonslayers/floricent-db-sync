@@ -16,6 +16,7 @@ class Db
         {//dd
             try
             {
+                Console.WriteLine("iniciando coneccion a mssql");
                 connection.Open();
 
                 // Verificar si la base de datos syncAux existe y crearla si no existe.
