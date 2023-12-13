@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "LW5vaEdaOhYbA4DOMjsQGlH4qPQHNuWKyJwyluKIiMD3RJG0FF+1HQzfLBvbXOKxVKr/FjNTa6QV0f2QHi5t5A==",
+  "dgSpecHash": "HgrgxRuEr1ouve9eUSQ/Z2YMiqfmkCo04E8JQL3U2+WKGhvtcmAqQPzAIabouId+PGPQZlku/pMWDF0uHAvCIg==",
   "success": true,
   "projectFilePath": "/home/junior/Documents/integranet/dbSync/dbSync.csproj",
   "expectedPackageFiles": [
@@ -13,7 +13,11 @@
     "/home/junior/.nuget/packages/runtime.win-x86.runtime.native.system.data.sqlclient.sni/4.4.0/runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "/home/junior/.nuget/packages/system.data.sqlclient/4.8.5/system.data.sqlclient.4.8.5.nupkg.sha512",
     "/home/junior/.nuget/packages/system.security.accesscontrol/4.7.0/system.security.accesscontrol.4.7.0.nupkg.sha512",
-    "/home/junior/.nuget/packages/system.security.principal.windows/4.7.0/system.security.principal.windows.4.7.0.nupkg.sha512"
+    "/home/junior/.nuget/packages/system.security.principal.windows/4.7.0/system.security.principal.windows.4.7.0.nupkg.sha512",
+    "/home/junior/.nuget/packages/microsoft.netcore.app.runtime.win-x64/7.0.13/microsoft.netcore.app.runtime.win-x64.7.0.13.nupkg.sha512",
+    "/home/junior/.nuget/packages/microsoft.aspnetcore.app.runtime.win-x64/7.0.13/microsoft.aspnetcore.app.runtime.win-x64.7.0.13.nupkg.sha512",
+    "/home/junior/.nuget/packages/microsoft.netcore.app.crossgen2.linux-x64/7.0.13/microsoft.netcore.app.crossgen2.linux-x64.7.0.13.nupkg.sha512",
+    "/home/junior/.nuget/packages/microsoft.netcore.app.host.win-x64/7.0.13/microsoft.netcore.app.host.win-x64.7.0.13.nupkg.sha512"
   ],
   "logs": []
 }
