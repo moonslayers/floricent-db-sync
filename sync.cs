@@ -26,7 +26,10 @@ class SyncDb
                     "admMovimientos",
                     "admDocumentos",
                     "admUnidadesMedidaPeso",
-                };
+                    "admMonedas",
+                    "admExistenciaCosto",
+                    "admEjercicios",
+            };
 
             if (CompareAndSyncTables(sourceConnection, targetConnection, "admProductos", "CIDPRODUCTO"))
             {
@@ -41,6 +44,38 @@ class SyncDb
             }
 
             Console.WriteLine("Sincronización completada.");
+        }
+    }
+
+    static void CreateTriggers(SqlConnection sourceConnection, SqlConnection targetConnection, string tableName, string id){
+
+        string selectQuery = $@"
+        CREATE TRIGGER insert{tableName}
+        ON {tableName}
+        FOR INSERT
+        AS
+            INSERT INTO EmpLog(EmployeeID, FirstName, LastName, HireDate, Operation, UpdatedOn, UpdatedBy)
+            SELECT EmployeeID, Firstname, LastName, HireDate, 'INSERT', GETDATE(), SUSER_NAME()
+            FROM INSERTED;
+        GO";
+
+    }
+    static bool TableExists(SqlConnection connection, string tableName)
+    {
+        string query = $"SELECT COUNT(*) FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = '{tableName}'";
+        using (SqlCommand command = new SqlCommand(query, connection))
+        {
+            int count = (int)command.ExecuteScalar();
+            return count > 0;
+        }
+    }
+    static void createTable(SqlConnection connection, string sourceDatabase, string tableName)
+    {
+        // Obtener la estructura de la tabla desde la base de datos fuente.
+        string createTableQuery = $"SELECT * INTO {tableName} FROM {sourceDatabase}.dbo.{tableName} WHERE 1 = 0";
+        using (SqlCommand createTableCommand = new SqlCommand(createTableQuery, connection))
+        {
+            createTableCommand.ExecuteNonQuery();
         }
     }
 

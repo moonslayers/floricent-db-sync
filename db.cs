@@ -10,7 +10,7 @@ using System.Runtime.InteropServices.JavaScript;
 
 class Db
 {
-    public void Conectar(string connectionString)
+    public static void Conectar(string connectionString)
     {
         using (SqlConnection connection = new SqlConnection(connectionString))
         {//dd
@@ -34,19 +34,19 @@ class Db
                 List<string> tablas = new List<string>(){
                     "admClientes",
                     "admProductos",
-                    "admMovimientos",
+                    "admPreciosCompra",
                     "admDocumentos",
+                    "admMovimientos",
                     "admUnidadesMedidaPeso",
                     "admMonedas",
-                    "admExistenciaCosto",
                     "admEjercicios",
                 };
                 List<string> condiciones = new List<string>(){
                     "WHERE CESTATUS=1 AND (CTIPOCLIENTE=2 OR CTIPOCLIENTE=3)",
                     "WHERE CSTATUSPRODUCTO=1",
-                    "FROM (SELECT m.*, MAX(m.CFECHA) OVER (PARTITION BY m.CIDPRODUCTO) AS row_number FROM admMovimientos m) AS temp WHERE CIDDOCUMENTODE =19",
-                    "WHERE CIDDOCUMENTODE=19",
                     "",
+                    "WHERE CIDDOCUMENTODE=19 OR CIDDOCUMENTODE = 21 OR CIDDOCUMENTODE = 211 OR CIDDOCUMENTODE = 212 OR CIDDOCUMENTODE = 213 OR CIDDOCUMENTODE = 214 OR CIDDOCUMENTODE = 215 OR CIDDOCUMENTODE = 216 OR CIDDOCUMENTODE = 217 OR CIDDOCUMENTODE = 218",
+                    "WHERE CIDDOCUMENTODE=19 OR CIDDOCUMENTODE = 21 OR CIDDOCUMENTODE = 211 OR CIDDOCUMENTODE = 212 OR CIDDOCUMENTODE = 213 OR CIDDOCUMENTODE = 214 OR CIDDOCUMENTODE = 215 OR CIDDOCUMENTODE = 216 OR CIDDOCUMENTODE = 217 OR CIDDOCUMENTODE = 218",
                     "",
                     "",
                     "",
@@ -121,9 +121,6 @@ class Db
         //string url = "http://3.132.141.153:3000/conpaq/db";
         string url = "http://localhost:3000/conpaq/db";
         //mi maquina
-        //string url = "http://192.168.10.125:3000/conpaq/db";
-        //amazon wbs
-        //string url = "http://3.132.141.153:3000/conpaq/db";
 
 
         // Realiza la solicitud POST
