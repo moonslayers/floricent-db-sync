@@ -34,19 +34,34 @@ class Db
                 List<string> tablas = new List<string>(){
                     "admClientes",
                     "admProductos",
-                    "admPreciosCompra",
-                    "admDocumentos",
                     "admMovimientos",
+                    "admDocumentos",
                     "admUnidadesMedidaPeso",
                     "admMonedas",
-                    "admEjercicios",
+                    "admAlmacenes",
+                    "admEjercicios",//Dejar al ultimo
                 };
                 List<string> condiciones = new List<string>(){
                     "WHERE CESTATUS=1 AND (CTIPOCLIENTE=2 OR CTIPOCLIENTE=3)",
                     "WHERE CSTATUSPRODUCTO=1",
+                    @"WITH CTE AS (
+                        SELECT
+                            *,
+                            ROW_NUMBER() OVER (PARTITION BY CIDPRODUCTO ORDER BY CFECHA DESC) AS RowNum
+                        FROM
+                            admMovimientos
+                        WHERE
+                        CIDDOCUMENTODE IN (19, 17, 23)
+                    )
+                    SELECT
+                    *
+                    FROM
+                    CTE
+                    WHERE
+                    RowNum = 1;
+                    ",
+                    "WHERE CIDDOCUMENTODE=19 OR CIDDOCUMENTODE = 17 OR CIDDOCUMENTODE = 23",
                     "",
-                    "WHERE CIDDOCUMENTODE=19 OR CIDDOCUMENTODE = 21 OR CIDDOCUMENTODE = 211 OR CIDDOCUMENTODE = 212 OR CIDDOCUMENTODE = 213 OR CIDDOCUMENTODE = 214 OR CIDDOCUMENTODE = 215 OR CIDDOCUMENTODE = 216 OR CIDDOCUMENTODE = 217 OR CIDDOCUMENTODE = 218",
-                    "WHERE CIDDOCUMENTODE=19 OR CIDDOCUMENTODE = 21 OR CIDDOCUMENTODE = 211 OR CIDDOCUMENTODE = 212 OR CIDDOCUMENTODE = 213 OR CIDDOCUMENTODE = 214 OR CIDDOCUMENTODE = 215 OR CIDDOCUMENTODE = 216 OR CIDDOCUMENTODE = 217 OR CIDDOCUMENTODE = 218",
                     "",
                     "",
                     "",
@@ -118,8 +133,8 @@ class Db
 
         // Define la URL a la que deseas enviar los datos
         //puerto 3000 es para pruebas
-        //string url = "http://3.132.141.153:3000/conpaq/db";
-        string url = "http://localhost:3000/conpaq/db";
+        string url = "http://3.132.141.153:3000/conpaq/db";
+        //string url = "http://localhost:3000/conpaq/db";
         //mi maquina
 
 
@@ -138,9 +153,8 @@ class Db
     {
         List<string> jsonRecords = new List<string>();
         string selectQuery = $"SELECT * FROM {tableName} {condicion}";
-        if (tableName == "admMovimientos")
-        {
-            selectQuery = $"SELECT * {condicion}";
+        if(tableName=="admMovimientos"){
+            selectQuery=condicion;
         }
         //Console.WriteLine(tableName);
 

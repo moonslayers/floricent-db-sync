@@ -7,7 +7,9 @@ namespace MiAplicacion
         {
             //correr solo la primera vez para crear la base de datos auxiliar syncAux
             Db db = new Db();
-            string connectionString = "Data Source=localhost;Initial Catalog=master;User ID=sa;Password=Soluciones@01";
+            //string connectionString = "Data Source=localhost;Initial Catalog=master;User ID=sa;Password=Soluciones@01";
+            string connectionString = "Data Source=FLORICENT\\COMPAC;User ID=sa;Password=Soluciones01";
+
             Db.Conectar(connectionString);
 
             //Como el cliente lo quiere pronto el sincronizado de las tablas
